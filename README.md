@@ -41,7 +41,7 @@ Then, change the block in main.if
 ```terraform
     backend "azurerm" {
         resource_group_name  = "tfstate"
-        storage_account_name = "tfstate27890"
+        storage_account_name = "tfstateXXXXX"
         container_name       = "tfstate"
         key                  = "terraform.tfstate"
     }
@@ -50,4 +50,17 @@ And initialize terraform
 
 ```bash
 terraform init
+```
+### Creating Infrastructure
+
+Run the plan:
+
+```bash
+terraform plan
+```
+
+Analyse the plan and, if everything is OK, create the stuff:
+
+```bash
+terraform apply
 ```
