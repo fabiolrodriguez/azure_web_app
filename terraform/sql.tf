@@ -1,4 +1,4 @@
-resource "azurerm_mssql_server" "example" {
+resource "azurerm_mssql_server" "sqlserver" {
   name                         = var.instance_name
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
@@ -12,9 +12,9 @@ resource "azurerm_mssql_server" "example" {
   }
 }
 
-resource "azurerm_mssql_database" "example" {
+resource "azurerm_mssql_database" "base" {
   name           = var.database_name
-  server_id      = azurerm_mssql_server.example.id
+  server_id      = azurerm_mssql_server.sqlserver.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
 #   max_size_gb    = 4
@@ -24,9 +24,9 @@ resource "azurerm_mssql_database" "example" {
 }
 
 resource "azurerm_mssql_database_extended_auditing_policy" "example" {
-  database_id                             = azurerm_mssql_database.example.id
-  storage_endpoint                        = azurerm_storage_account.example.primary_blob_endpoint
-  storage_account_access_key              = azurerm_storage_account.example.primary_access_key
+  database_id                             = azurerm_mssql_database.base.id
+  storage_endpoint                        = azurerm_storage_account.sacc.primary_blob_endpoint
+  storage_account_access_key              = azurerm_storage_account.sacc.primary_access_key
   storage_account_access_key_is_secondary = false
   retention_in_days                       = 6
 }
