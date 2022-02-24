@@ -62,3 +62,13 @@ variable "vnet_name" {
   default = "fabio-vnet"
   description = "name of vpc"
 }
+
+variable "db_subnet_name" {
+  default = "db_subnet"
+  description = "name of database subnet"
+}
+
+variable "db_subnet" {
+  default = "10.0.3.0/24"
+  description = "database subnet"
+}
