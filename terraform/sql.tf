@@ -1,29 +1,11 @@
-resource "azurerm_resource_group" "example" {
-  name     = var.database_name
-  location = var.location
-}
-
-resource "azurerm_storage_account" "example" {
-  name                     = var.storage_acc
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-
 resource "azurerm_mssql_server" "example" {
-  name                         = "mssqlserverfabioteste"
-  resource_group_name          = azurerm_resource_group.example.name
-  location                     = azurerm_resource_group.example.location
+  name                         = var.instance_name
+  resource_group_name          = azurerm_resource_group.rg.name
+  location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
   administrator_login          = var.admin_login
-  administrator_login_password = var.admin_password
+  administrator_login_password = var.admin_password 
   minimum_tls_version          = "1.2"
-
-#   azuread_administrator {
-#     login_username = "AzureAD Admin"
-#     object_id      = "00000000-0000-0000-0000-000000000000"
-#   }
 
   tags = {
     environment = "development"
@@ -31,7 +13,7 @@ resource "azurerm_mssql_server" "example" {
 }
 
 resource "azurerm_mssql_database" "example" {
-  name           = "fabiotest-db-d"
+  name           = var.database_name
   server_id      = azurerm_mssql_server.example.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
