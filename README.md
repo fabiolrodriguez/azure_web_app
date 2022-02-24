@@ -33,7 +33,8 @@ az login
 Now, you need to create the storage account to host terraform state, just run the script:
 
 ```bash
-state.sh
+cd terraform
+./state.sh
 ```
 
 Then, change the block in main.if
