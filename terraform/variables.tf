@@ -29,7 +29,7 @@ variable "admin_login" {
 }
 
 variable "admin_password" {
-  default = "INSERT YOUR PASSWORD"
+  default = "1ns3rtP4$$w0rd"
   description = "Administrator password"
 }
 
@@ -71,4 +71,9 @@ variable "db_subnet_name" {
 variable "db_subnet" {
   default = "10.0.3.0/24"
   description = "database subnet"
+}
+
+variable "bastion_subnet" {
+  default = "10.0.4.0/24"
+  description = "bastion subnet"
 }

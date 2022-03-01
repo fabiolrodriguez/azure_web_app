@@ -37,7 +37,7 @@ cd terraform
 ./state.sh
 ```
 
-Then, change the block in main.if
+Then, change the block in main.if including your generated storage account
 
 ```terraform
     backend "azurerm" {

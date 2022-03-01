@@ -31,8 +31,8 @@ resource "azurerm_mssql_database_extended_auditing_policy" "example" {
   retention_in_days                       = 6
 }
 
-resource "azurerm_mssql_virtual_network_rule" "vnetrule" {
-  name      = "sql-vnet-rule"
-  server_id = azurerm_mssql_server.sqlserver.id
-  subnet_id = azurerm_subnet.dbsubnet.id
-}
+# resource "azurerm_mssql_virtual_network_rule" "vnetrule" {
+#   name      = "sql-vnet-rule"
+#   server_id = azurerm_mssql_server.sqlserver.id
+#   subnet_id = azurerm_subnet.dbsubnet.id
+# }
