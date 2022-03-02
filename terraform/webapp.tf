@@ -10,4 +10,10 @@ resource "azurerm_app_service" "webapp" {
     manual_integration = true
     use_mercurial      = false
   }
+    connection_string {
+    name  = "Database"
+    type  = "SQLServer"
+    value = "database-fabio-test.database.windows.net Security=SSPI"
+  }
+  depends_on=[azurerm_mssql_database.base]
 }
