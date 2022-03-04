@@ -15,8 +15,7 @@ resource "azurerm_app_service" "webapp" {
     type  = "SQLServer"
     value = "database-fabio-test.database.windows.net Security=SSPI"
   }
-  depends_on=[azurerm_mssql_database.base]
   provisioner "local-exec" {
-    command = "az webapp deployment list-publishing-profiles --resource-group ${azurerm_resource_group.rg.name} --name ${azurerm_app_service.webapp.name} --xml >> publish.profile.xml"
+    command = "az webapp deployment list-publishing-profiles --resource-group ${azurerm_resource_group.rg.name} --name ${azurerm_app_service.webapp.name} --xml > publish.profile.xml"
   }
 }
