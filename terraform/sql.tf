@@ -30,11 +30,10 @@ resource "azurerm_mssql_database_extended_auditing_policy" "example" {
 }
 
 resource "azurerm_sql_firewall_rule" "app_server_firewall_rule" {
-  for_each = toset(azurerm_app_service.webapp.outbound_ip_address_list)
-
-  name                = "web_app_ip_${replace(each.value, ".", "_")}"
+  # enable Azure Services
+  name                = "webapp_ip_access"
   resource_group_name = azurerm_resource_group.rg.name
   server_name         = azurerm_mssql_server.sqlserver.name
-  start_ip_address    = each.value
-  end_ip_address      = each.value
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
 }
