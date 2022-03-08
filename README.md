@@ -129,12 +129,11 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         
-  # For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
-  # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 ```
 
 ### Setup CI/CD
 
-After run /*terraform apply*/, a local archive publish.profile.xml will be generated.
+After run /*terraform apply*/, a local archive /*publish.profile.xml*/ will be generated.
 
-To configure Github Actions, 
+To configure Github Actions, you need to add a Github secret to yout repository with the content of /*publish.profile.xml*/.
+
